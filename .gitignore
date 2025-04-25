@@ -5,3 +5,4 @@
 /.vs
 /back/bin/Debug/net9.0
 /back/obj
+/back/back.csproj.user
