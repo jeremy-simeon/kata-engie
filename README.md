@@ -10,7 +10,7 @@ You are working at an energy provider company and want to estimate building cons
 
 ## Exercice 1
 
-The website should contain a form that allow to give the properties of a building:
+The website should contain a form that allows to give the properties of a building:
 - ground area
 - number of levels
 - usage
@@ -19,7 +19,7 @@ These informations are sent to the back that uses a proprietary algoritm to calc
 
 ## Exercice 2
 
-The website should provide a endpoint that returns a geojson file with building consumptions calculated.
+The website should provide an endpoint that returns a geojson file with building consumptions calculated.
 
 The front will display the colors of the buildings according to the consumption.
 

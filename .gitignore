@@ -3,6 +3,6 @@
 ################################################################################
 
 /.vs
-/back/bin/Debug/net9.0
+/back/bin
 /back/obj
 /back/back.csproj.user
