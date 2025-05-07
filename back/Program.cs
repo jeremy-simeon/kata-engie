@@ -10,7 +10,11 @@ var builder = WebApplication.CreateBuilder(args);
 builder.Services.AddOpenApi();
 builder.Services.Configure<KestrelServerOptions>(options => options.AllowSynchronousIO = true);
 
-builder.Services.AddCors(options => options.AddDefaultPolicy(corsBuilder => corsBuilder.AllowAnyOrigin()));
+builder.Services.AddCors(options => options.AddDefaultPolicy(corsBuilder =>
+{
+    corsBuilder.AllowAnyHeader();
+    corsBuilder.AllowAnyOrigin();
+}));
 
 var app = builder.Build();
 
