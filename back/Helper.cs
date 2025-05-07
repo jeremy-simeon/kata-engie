@@ -1,9 +1,29 @@
+using NetTopologySuite.Features;
 using NetTopologySuite.Geometries;
+using NetTopologySuite.IO;
+using Newtonsoft.Json;
 using ProjNet.CoordinateSystems;
 using ProjNet.CoordinateSystems.Transformations;
 
 internal static class Helpers
 {
+    internal static FeatureCollection Deserialize(string jsonText)
+    {
+        var serializer = GeoJsonSerializer.Create();
+        using var stringReader = new StringReader(jsonText);
+        using var jsonReader = new JsonTextReader(stringReader);
+        var featureCollection = serializer.Deserialize<FeatureCollection>(jsonReader);
+        return featureCollection ?? throw new InvalidOperationException("FeatureCollection is null");
+    }
+
+    internal static string Serialize(FeatureCollection featureCollection)
+    {
+        var serializer = GeoJsonSerializer.Create();
+        using var stringWriter = new StringWriter();
+        using var jsonWriter = new JsonTextWriter(stringWriter);
+        serializer.Serialize(jsonWriter, featureCollection);
+        return stringWriter.ToString();
+    }
     internal static double? ComputeArea(Geometry geometry)
     {
         var transformedGeometry = Transform(geometry);
